@@ -1,0 +1,56 @@
+import java.util.*;
+class Solution{
+    public static void main(String []argh)
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        while (sc.hasNext()) {
+            String input=sc.next();
+            System.out.println(check(input));
+        }
+    }
+     public static boolean check(String input) {
+        Stack<String> st = new Stack<String>();
+        List<String> character = new ArrayList<>(Arrays.asList(input.split("")));
+        StringBuilder compstr = new StringBuilder();
+        character.forEach(c -> {
+            switch (c) {
+                case "(":
+                    st.push(c);
+                    compstr.append(c);
+                    break;
+                case "{":
+                    st.push(c);
+                    compstr.append(c);
+                    break;
+                case "[":
+                    st.push(c);
+                    compstr.append(c);
+                    break;
+                case ")":
+                    if (!st.empty() && st.peek().equals("(")){
+                        compstr.append(c);
+                        st.pop();
+                    }
+                    break;
+                case "}":
+                    if (!st.empty() && st.peek().equals("{")) {
+                        compstr.append(c);
+                        st.pop();
+                    }
+                    break;
+                case "]":
+                    if (!st.empty() && st.peek().equals("[")) {
+                        compstr.append(c);
+                        st.pop();
+                    }
+                    break;
+            }
+        });
+        if (!compstr.toString().equals(input)) {return false;}
+        if (st.empty()) {
+            return true;
+        }
+        return false;
+}
+}
