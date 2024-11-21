@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String str = sc.nextLine();
+        ArrayList<ArrayList<String>> li = new ArrayList<ArrayList<String>>(n);
+        for (int i = 0; i < n; i++) {
+            str = sc.nextLine();
+            li.add(i, new ArrayList<String>(Arrays.asList(str.split("\\s"))));
+        }
+        int m = sc.nextInt();
+        for (int i = 0; i < m; i++) {
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            if (x <= li.size() && y < li.get(x-1).size() && y >= 0) {
+                System.out.println(li.get(x-1).get(y));
+            } else {
+                System.out.println("ERROR!");
+            }
+        }
+    }   
+}
