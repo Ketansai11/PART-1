@@ -1,0 +1,36 @@
+import java.util.Scanner;
+
+public class Solution {
+    static boolean isAnagram(String a, String b) {
+        java.util.HashMap<Character,Integer> map = new java.util.HashMap<>();
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        for(char ch: a.toCharArray()){
+            if(map.containsKey(ch)){
+                map.put(ch,map.get(ch)+1);
+            }else{
+                map.put(ch,1);
+            }
+        }
+        for (char ch : b.toCharArray()) {
+            if (!map.containsKey(ch)) {
+                return false;
+            }
+            map.put(ch, map.get(ch) - 1);
+        }
+        for (int count : map.values()) {
+            if (count != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
