@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int bitSetSize = in.nextInt();
+        int operationsCount = in.nextInt();
+        BitSet bitSet1 = new BitSet(bitSetSize);
+        BitSet bitSet2 = new BitSet(bitSetSize);
+
+        Map<Integer, BitSet> bitSets = new HashMap<>();
+        bitSets.put(1, bitSet1);
+        bitSets.put(2, bitSet2);
+
+        for (int i = 0; i < operationsCount; i++) {
+            String command = in.next();
+            int first = in.nextInt();
+            int second = in.nextInt();
+
+            switch (command) {
+                case "AND":
+                    bitSets.get(first).and(bitSets.get(second));
+                    break;
+                case "OR":
+                    bitSets.get(first).or(bitSets.get(second));
+                    break;
+                case "XOR":
+                    bitSets.get(first).xor(bitSets.get(second));
+                    break;
+                case "FLIP":
+                    bitSets.get(first).flip(second);
+                    break;
+                case "SET":
+                    bitSets.get(first).set(second);
+                    break;
+            }
+            System.out.println(bitSet1.cardinality() + " " + bitSet2.cardinality());
+        }
+        in.close();
+    }
+}
