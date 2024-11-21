@@ -1,0 +1,17 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String a=sc.next();
+        String b=sc.next();
+        int k = a.length() + b.length();
+        boolean f = a.compareTo(b) > 0 ; 
+        String res = a.substring(0,1).toUpperCase() + a.substring(1) + " " + b.substring(0,1).toUpperCase() + b.substring(1);
+        System.out.println(k);
+        System.out.println( f ? "Yes" : "No" );
+        System.out.println( res );
+        
+    }
+}
