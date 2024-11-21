@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+    public static void main(String[] args) {
+     Scanner sc=new Scanner(System.in);
+    int n=sc.nextInt();
+    ArrayList<Integer> list=new ArrayList<>();
+    for(int i=0;i<n;i++){
+        list.add(sc.nextInt());
+    }
+    int t=sc.nextInt();
+    for(int i=0;i<t;i++){
+        String query=sc.next();
+        if(query.equals("Insert")){
+             int ind=sc.nextInt();
+        int val=sc.nextInt();
+        list.add(ind,val);
+        }
+        else if(query.equals("Delete")){
+            int ind=sc.nextInt();
+            list.remove(ind);
+        }
+}
+Iterator<Integer> iterator = list.iterator();
+    while (iterator.hasNext()) {
+        System.out.print(iterator.next() + " ");
+    }
+sc.close();
+    }
+}
